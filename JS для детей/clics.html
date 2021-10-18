@@ -6,24 +6,14 @@
 </head>
 <body>
 <h1 id="heading">Привет, мир!</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolor id tempora. Adipisci alias amet architecto aut autem, consequatur culpa eligendi eos error est expedita ipsum laudantium maxime minus modi, molestiae neque nesciunt numquam officia omnis porro possimus quis ratione reprehenderit saepe soluta totam voluptatem. A dignissimos doloribus eum facere facilis fugit, molestiae molestias odit omnis pariatur placeat, quaerat, soluta vero voluptatibus voluptatum! Ab beatae consectetur delectus dolorem eaque error eveniet fuga harum ipsa itaque magni molestiae necessitatibus nemo quae quidem ratione saepe sapiente sed, similique sint suscipit velit veniam voluptas! Aliquam, at atque dolore ex exercitationem, explicabo fuga impedit labore nobis quae quidem sit totam voluptates. Aut cupiditate deleniti dolorum ea omnis, optio qui sapiente tempore voluptatibus. Alias amet animi autem corporis cupiditate deleniti distinctio dolorem ea, et fugiat illum itaque iusto labore nesciunt nobis nostrum nulla optio pariatur quibusdam quo quod ratione saepe sed tenetur veniam? Iure, molestiae.</p>
 <script src="https://code.jquery.com/jquery-2.1.0.js">
 </script>
 <script>
-  let leftOffset = 0;
-  let topOffset = 0;
-  let moveHeading = function () {
-    if (leftOffset > 200 || topOffset > 200) {
-      leftOffset = 0;
-      topOffset = 0;
-    }
-
-    $("#heading").offset({left:leftOffset});
-    $("#heading").offset({top:topOffset});
-    topOffset+=2;
-    leftOffset+=2;
-    console.log(leftOffset);
-  };
-  setInterval(moveHeading,15);
+let clickHandler =  function (event) {
+  console.log("Click document! Coordinates: " + event.pageX + " " + event.pageY);
+}
+$("html").click(clickHandler);
 </script>
 
 </body>

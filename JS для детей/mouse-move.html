@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mouse move</title>
+  </head>
+  <body>
+    <h1 id="heading">Привет, мир!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <!--  <script>-->
+    <!--    let mouseMoveHandler = function (event) {-->
+    <!--      $("#heading").offset({-->
+    <!--        left: event.pageX,-->
+    <!--        top: event.pageY-->
+    <!--      }).text(" Координаты x = " + event.pageX + ", y = " + event.pageY);-->
+    <!--    }-->
+    <!--    $("html").mousemove(mouseMoveHandler);-->
+    <!--  </script>-->
+
+    <!--обработка сразу встроена в отслеживание события-->
+    <script>
+      $("html").mousemove(function (event) {
+        $("#heading")
+          .offset({ left: event.pageX, top: event.pageY })
+          .text(" Координаты x = " + event.pageX + ", y = " + event.pageY);
+      });
+    </script>
+  </body>
 </html>

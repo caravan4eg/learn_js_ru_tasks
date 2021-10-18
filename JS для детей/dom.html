@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Изучаем DOM</title>
 </head>
 <body>
-$END$
+<h1 id="main-heading">Привет, мир!</h1>
+<h2 >Привет, Р2!</h2>
+<!--DOM methods-->
+<!--<script>-->
+<!--  let headingElement = document.getElementById("main-heading");-->
+<!--  console.log(headingElement.innerHTML);-->
+<!--  let newHeadingText = prompt("Введите новый заголовок:");-->
+<!--  headingElement.innerHTML = newHeadingText;-->
+<!--</script>-->
+
+<!--jquery methods-->
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script>
+  // let newHeadingText = prompt("Введите новый заголовок:");
+  // $("#main-heading").text(newHeadingText);
+  // $("h1").fadeOut(3000).fadeIn(2000);
+  // $("h1").slideUp(1000).slideDown(1000);
+  // for (let i = 0; i < 3; i++) {
+  //   $("h1").fadeOut(1000).fadeIn(1000);
+  //   $("h1").hide(1000).show(1000); }
+  $("#main-heading").text(prompt("Who is this?"));
+  let friends = ["Piter", "Marat", "Ihor"];
+  for (let i = 0; i < friends.length; i++) {
+    $("body").append( "<p>" + friends[i] + "</p>");
+
+  }
+  $("p").append(" - the best!");
+  for (let i = 0; i < 5; i++) {
+    $("h1").fadeOut(1000).delay(5000).fadeIn(1000);
+
+  }
+  $("h1").fadeTo(2000, 0.5);
+
+  // let hobby = '';
+  // for (let i = 0; i < 3; i++) {
+  //   hobby = prompt("Назови одно из своих хобби!");
+  //   $("body").append("<p>" + hobby + "</p>");
+  // }
+</script>
 </body>
 </html>

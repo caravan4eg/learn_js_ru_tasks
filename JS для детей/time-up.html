@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Time Up</title>
 </head>
 <body>
-$END$
+<h1>Время вышло</h1>
+<script>
+  // function timeUp() {
+  //   alert("Пора вставать! Wake Up");
+  // }
+  // let timeOutId = setTimeout(timeUp, 5000);
+  // alert(timeOutId);
+  // clearTimeout(timeOutId);
+  let counter = 0;
+  let printMessage = function (){
+    console.log("Ты смотришь консоль уже" + counter + "секунд");
+    counter++;
+  }
+
+  setInterval(printMessage, 1000);
+
+</script>
 </body>
 </html>
