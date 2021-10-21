@@ -5,19 +5,51 @@
     <title>Mouse move</title>
   </head>
   <body>
-    <h1 id="heading">Привет, mouse! </h1>
+    <h1 id="heading">Ну, поехали! </h1>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
     <script>
-      let headingTitle = document.getElementById("heading").innerText;
-      console.log(headingTitle);
-      $("html").click(function (event) {
-        $("#heading")
-          .offset({ left: event.pageX, top: event.pageY })
-          .text(headingTitle)
-          .append(" Координаты x = " + event.pageX + ", y = " + event.pageY);
+      let leftOffset = 0;
+      let topOffset = 0;
+      let moveHeading = function () {
+        // едем вправо
+        if (leftOffset < 300 && topOffset === 0 ) {
+          $("#heading").offset({left:leftOffset});
+          leftOffset++;
+        }
+        // едем вниз с правой стороны
+        if (leftOffset === 300 && topOffset < 300) {
+          $("#heading").offset({top:topOffset});
+          topOffset++;
+        }
+        if (leftOffset <= 300 && leftOffset > 0  && topOffset === 300) {
+          $("#heading").offset({left:leftOffset});
+          leftOffset--;
+        }
 
-      });
+        if (leftOffset === 0 && topOffset <= 300 && topOffset > 0) {
+          $("#heading").offset({top: topOffset});
+          topOffset--;
+        }
+
+      }
+      let intervalId = setInterval(moveHeading,15);
+      let canMove = true;
+      $("html").click(function () {
+        if (canMove) {
+          canMove = false;
+        } else { canMove = true };
+
+        if (canMove) {
+          console.log("Останавливаем!");
+          clearInterval(intervalId);
+        }
+        if (!canMove) {
+          console.log("Запускаем");
+          setInterval(moveHeading,15);
+        }
+        });
+
     </script>
   </body>
 </html>

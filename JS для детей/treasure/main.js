@@ -9,7 +9,7 @@ let getDistance = function (event, target) {
   return Math.sqrt(diffX * diffX + diffY * diffY);
 };
 // Формируем сообщение, насколько близоко к цели
-var getDistanceHint = function (distance) {
+let getDistanceHint = function (distance) {
   if (distance < 10) {
     return "Обожжешься!";
   } else if (distance < 20) {
@@ -26,9 +26,12 @@ var getDistanceHint = function (distance) {
     return "Замерзнешь!";
   }
 };
-// координаты клада
+// инициализация
+let clicks = 0;
 let width = 400;
 let height = 400;
+
+// координаты клада
 let target = {
   x: getRandomNumber(width),
   y: getRandomNumber(height),
@@ -45,6 +48,7 @@ $("#map").click(function (event) {
     // Если клик был достаточно близко, поздравляем с победой
     if (distance < 8) {
     alert("Клад найден! Сделано кликов: " + clicks);
+    $("#distance").text("Клад найден! Сделано кликов: " + clicks);
     }
     });
 

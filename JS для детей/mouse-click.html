@@ -5,24 +5,18 @@
     <title>Mouse move</title>
   </head>
   <body>
-    <h1 id="heading">Привет, мир!</h1>
+    <h1 id="heading">Привет, mouse! </h1>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
-    <!--  <script>-->
-    <!--    let mouseMoveHandler = function (event) {-->
-    <!--      $("#heading").offset({-->
-    <!--        left: event.pageX,-->
-    <!--        top: event.pageY-->
-    <!--      }).text(" Координаты x = " + event.pageX + ", y = " + event.pageY);-->
-    <!--    }-->
-    <!--    $("html").mousemove(mouseMoveHandler);-->
-    <!--  </script>-->
 
-    <!--обработка сразу встроена в отслеживание события-->
     <script>
-      $("html").mousemove(function (event) {
+      let headingTitle = document.getElementById("heading").innerText;
+      console.log(headingTitle);
+      $("html").click(function (event) {
         $("#heading")
           .offset({ left: event.pageX, top: event.pageY })
-          .text(" Координаты x = " + event.pageX + ", y = " + event.pageY);
+          .text(headingTitle)
+          .append(" Координаты x = " + event.pageX + ", y = " + event.pageY);
+
       });
     </script>
   </body>
