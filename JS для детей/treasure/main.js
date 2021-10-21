@@ -9,27 +9,28 @@ let getDistance = function (event, target) {
   return Math.sqrt(diffX * diffX + diffY * diffY);
 };
 // Формируем сообщение, насколько близоко к цели
-let getDistanceHint = function (distance) {
+let getDistanceHint = function (clicks, distance) {
   if (distance < 10) {
-    return "Обожжешься!";
+    return "Обожжешься! Осталось кликов: " + clicks;
   } else if (distance < 20) {
-    return "Очень горячо";
+    return "Очень горячо! Осталось кликов: " + clicks;
   } else if (distance < 40) {
-    return "Горячо";
+    return "Горячо! Осталось кликов: " + clicks;
   } else if (distance < 80) {
-    return "Тепло";
+    return "Тепло. Осталось кликов: " + clicks;
   } else if (distance < 160) {
-    return "Холодно";
+    return "Холодно. Осталось кликов: " + clicks;
   } else if (distance < 320) {
-    return "Очень холодно";
+    return "Очень холодно! Осталось кликов: " + clicks;
   } else {
-    return "Замерзнешь!";
+    return "Замерзнешь! Осталось кликов: " + clicks;
   }
 };
 // инициализация
-let clicks = 0;
+let clicks = 50;
 let width = 400;
 let height = 400;
+let wonGame = false;
 
 // координаты клада
 let target = {
@@ -38,17 +39,21 @@ let target = {
 };
 // обрабботка кликов
 $("#map").click(function (event) {
-    clicks++;
+    clicks--;
+    $("#distance").text("Осталось кликов: " + clicks);
     // Получаем расстояние от места клика до клада
     let distance = getDistance(event, target);
     // Преобразуем расстояние в подсказку
-    let distanceHint = getDistanceHint(distance);
+    let distanceHint = getDistanceHint(clicks, distance);
     // Записываем в элемент #distance новую подсказку
     $("#distance").text(distanceHint);
     // Если клик был достаточно близко, поздравляем с победой
-    if (distance < 8) {
+    if (distance < 8 && clicks > 0) {
     alert("Клад найден! Сделано кликов: " + clicks);
     $("#distance").text("Клад найден! Сделано кликов: " + clicks);
+    }
+    if (clicks === 0) {
+        alert("Клад не найден! Осталось кликов: " + clicks);
     }
     });
 
